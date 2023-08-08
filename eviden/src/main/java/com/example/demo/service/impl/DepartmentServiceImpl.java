@@ -1,3 +1,4 @@
+
 package com.example.demo.service.impl;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public Department updateDepartment(Long id, Department department) {
 		Department departmentToUpdate = departmentRepository.findById(id).orElseThrow();
-		departmentToUpdate.setDeptName(department.getDeptName());
+		departmentToUpdate.setDept_name(department.getDept_name());
         
         //employeeToUpdate.setEmpDob(employee.getEmpDob());
         
@@ -60,4 +61,3 @@ public class DepartmentServiceImpl implements DepartmentService{
 
 
 }
-

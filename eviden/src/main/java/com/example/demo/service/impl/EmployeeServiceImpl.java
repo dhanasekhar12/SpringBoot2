@@ -1,3 +1,4 @@
+
 package com.example.demo.service.impl;
 import java.util.List;
 import java.util.Optional;
@@ -44,9 +45,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public Employee updateEmployee(Long id, Employee employee) {
 		Employee employeeToUpdate = employeeRepository.findById(id).orElseThrow();
-        employeeToUpdate.setEmpName(employee.getEmpName());
+        employeeToUpdate.setEmp_name(employee.getEmp_name());
         
-        employeeToUpdate.setEmpDob(employee.getEmpDob());
+        employeeToUpdate.setEmp_dob(employee.getEmp_dob());
         employeeToUpdate.setSalary(employee.getSalary());
         employeeToUpdate.setMobile(employee.getMobile());
         employeeToUpdate.setDepartment(employee.getDepartment());
@@ -75,4 +76,3 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 }
-

@@ -1,16 +1,27 @@
 package com.example.demo.model;
 
+import java.util.List;
+
+//import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@JsonProperty("deptId")
     private Long deptId;
-    private String deptName;
+    private String dept_name;
+    
+    //@OneToMany(mappedBy="department")
+    //private List<Employee> employees;
+    
+    
     
  
 	public Department() {
@@ -18,10 +29,10 @@ public class Department {
 	}
 
 
-	public Department(String deptName) {
+	public Department(String dept_name) {
 		super();
 		
-		this.deptName = deptName;
+		this.dept_name = dept_name;
 	}
 
 
@@ -36,21 +47,20 @@ public class Department {
 	}
 
 
-	public String getDeptName() {
-		return deptName;
+	public String getDept_name() {
+		return dept_name;
 	}
 
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setDept_name(String dept_name) {
+		this.dept_name = dept_name;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Department [deptId=" + deptId + ", deptName=" + deptName + "]";
+		return "Department [deptId=" + deptId + ", dept_name=" + dept_name + "]";
 	}
 
 	
 }
-

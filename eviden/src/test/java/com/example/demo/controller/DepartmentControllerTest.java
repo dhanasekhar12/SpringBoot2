@@ -34,7 +34,7 @@ public class DepartmentControllerTest {
     }
 //add department positive
     @Test
-    public void testSaveDepartment_PositiveScenario() {
+    public void testSaveDepartment_Positive() {
         Department newDepartment = new Department("hr");
         Department savedDepartment = new Department("tester");
         
@@ -48,7 +48,7 @@ public class DepartmentControllerTest {
     
   //add department negative
     @Test
-    public void testSaveDepartment_NegativeScenario_Failure() {
+    public void testSaveDepartment_Negative() {
         Department newDepartment = new Department("hr");
         
         when(departmentService.saveDepartment(any(Department.class))).thenReturn(null);
@@ -61,7 +61,7 @@ public class DepartmentControllerTest {
     
     //get all departments positive
     @Test
-    public void testGetAllDepartment_PositiveScenario() {
+    public void testGetAllDepartment_Positive() {
         List<Department> departments = Arrays.asList(
             new Department("developer"),
             new Department("tester")
@@ -76,7 +76,7 @@ public class DepartmentControllerTest {
     
   //get all departments negative
     @Test
-    public void testGetAllDepartment_NegativeScenario_EmptyList() {
+    public void testGetAllDepartment_Negative() {
         when(departmentService.getAllDepartment()).thenReturn(Collections.emptyList());
 
         List<Department> result = departmentController.getAllDepartment();
@@ -87,7 +87,7 @@ public class DepartmentControllerTest {
     
     //get all departments by id positive
     @Test
-    public void testGetDepartmentById_PositiveScenario() {
+    public void testGetDepartmentById_Positive() {
         Long departmentId = 1L;
         Department department = new Department("developer");
         
@@ -101,8 +101,8 @@ public class DepartmentControllerTest {
     
   //get all departments by id negative
     @Test
-    public void testGetDepartmentById_NegativeScenario_NotFound() {
-        Long nonExistentDepartmentId = 999L;
+    public void testGetDepartmentById_Negative() {
+        Long nonExistentDepartmentId = 99L;
         
         when(departmentService.getDepartmentById(nonExistentDepartmentId)).thenReturn(Optional.empty());
 
@@ -113,7 +113,7 @@ public class DepartmentControllerTest {
     
     //update department by id positive
     @Test
-    public void testUpdateDepartment_PositiveScenario() {
+    public void testUpdateDepartment_Positive() {
         Long departmentId = 1L;
         Department updatedDepartment = new Department("cloud");
         
@@ -128,7 +128,7 @@ public class DepartmentControllerTest {
   //update department by id negative
     
     @Test
-    public void testUpdateDepartment_NegativeScenario_Failure() {
+    public void testUpdateDepartment_NegativeScena() {
         Long departmentId = 1L;
         Department updatedDepartment = new Department("sales");
         
@@ -143,28 +143,22 @@ public class DepartmentControllerTest {
     public void testDeleteDepartment_PositiveScenario() {
         Long departmentId = 1L;
         
-        // Mock the service method to simulate successful deletion
         doNothing().when(departmentService).deleteDepartment(departmentId);
 
-        // Call the controller method
         departmentController.deleteDepartment(departmentId);
 
-        // Verify that the service method was called once
         verify(departmentService, times(1)).deleteDepartment(departmentId);
     }
     
   //delete department negative
     @Test
-    public void testDeleteDepartment_NegativeScenario_Failure() {
+    public void testDeleteDepartment_Negative() {
         Long departmentId = 1L;
         
-        // Mock the service method to simulate a failure
         doThrow(new RuntimeException("Failed to delete department")).when(departmentService).deleteDepartment(departmentId);
 
-        // Call the controller method and expect an exception
         assertThrows(RuntimeException.class, () -> departmentController.deleteDepartment(departmentId));
 
-        // Verify that the service method was called once
         verify(departmentService, times(1)).deleteDepartment(departmentId);
     }
 }

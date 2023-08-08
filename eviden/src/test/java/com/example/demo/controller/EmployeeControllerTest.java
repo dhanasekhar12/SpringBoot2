@@ -23,6 +23,7 @@ import com.example.demo.service.EmployeeService;
 import com.example.demo.model.Department;
 import com.example.demo.service.DepartmentService;
 import java.util.Optional;
+
 public class EmployeeControllerTest {
 
     @Mock
@@ -48,12 +49,12 @@ public class EmployeeControllerTest {
     public void testGetEmployeeById_Positive() {
         Long empId = 1L;
         Employee mockEmployee = new Employee();
-        mockEmployee.setEmp_name("John Doe");
+        mockEmployee.setEmp_name("suri");
         mockEmployee.setEmp_dob(new Date(1993-03-04));
         mockEmployee.setDepartment(2L);
         mockEmployee.setSalary(50000.0);
         mockEmployee.setManagerId(123L);
-        mockEmployee.setMobile("123-456-7890");
+        mockEmployee.setMobile("1234567890");
         
         when(employeeService.getEmployeeById(empId)).thenReturn(Optional.of(mockEmployee));
 
@@ -81,8 +82,8 @@ public class EmployeeControllerTest {
     @Test
     public void testGetAllEmployee_Positive() {
         List<Employee> mockEmployees = new ArrayList<>();
-        mockEmployees.add(new Employee("John Doe", new Date(1993-03-04), 2L, 50000.0, 123L, "1234567890"));
-        mockEmployees.add(new Employee("Jane Smith", new Date(1980-06-05), 2L, 60000.0, 1L, "9876543210"));
+        mockEmployees.add(new Employee("suri", new Date(1993-03-04), 2L, 50000.0, 123L, "1234567890"));
+        mockEmployees.add(new Employee("shiva", new Date(1980-06-05), 2L, 60000.0, 1L, "9876543210"));
         
         when(employeeService.getAllEmployee()).thenReturn(mockEmployees);
 
@@ -188,7 +189,7 @@ public class EmployeeControllerTest {
     	newEmployee.setDepartment(2L);
     	newEmployee.setSalary(50000.0);
     	newEmployee.setManagerId(22L);
-    	newEmployee.setMobile("123-456-7890");
+    	newEmployee.setMobile("1234567890");
 
         when(employeeService.saveEmployee(newEmployee)).thenReturn(null);
 

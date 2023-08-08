@@ -1,3 +1,4 @@
+
 package com.example.demo.model;
 
 import java.util.Date;
@@ -24,11 +25,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String empName;
-    private Date empDob;
+    private String emp_name;
+    private Date emp_dob;
     @ManyToOne
     @JoinColumn(name = "deptId")
-    private Department department;
+    private Long department;
     private Double salary;
     private Long managerId;
     private String mobile;
@@ -41,12 +42,12 @@ public Employee() {
 	}
     
     
-    public Employee(String empName, Date empDob, Department department, Double salary, Long managerId,
+    public Employee(String emp_name, Date emp_dob, Long department, Double salary, Long managerId,
 		String mobile) {
 	super();
 	
-	this.empName = empName;
-	this.empDob = empDob;
+	this.emp_name = emp_name;
+	this.emp_dob = emp_dob;
 	this.department = department;
 	this.salary = salary;
 	this.managerId = managerId;
@@ -56,22 +57,22 @@ public Employee() {
 	public void setEmpId(Long id) {
         this.id = id;
     }
-    public String getEmpName() {
-        return empName;
+    public String getEmp_name() {
+        return emp_name;
     }
-    public void setEmpName(String empName) {
-        this.empName = empName;
+    public void setEmp_name(String emp_name) {
+        this.emp_name = emp_name;
     }
-    public Date getEmpDob() {
-        return empDob;
+    public Date getEmp_dob() {
+        return emp_dob;
     }
-    public void setEmpDob(Date empDob) {
-        this.empDob = empDob;
+    public void setEmp_dob(Date emp_dob) {
+        this.emp_dob = emp_dob;
     }
-    public Department getDepartment() {
+    public Long getDepartment() {
         return department;
     }
-    public void setDepartment(Department department) {
+    public void setDepartment(Long department) {
         this.department = department;
     }
     public Double getSalary() {
@@ -92,6 +93,8 @@ public Employee() {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
+	
 
 
 }

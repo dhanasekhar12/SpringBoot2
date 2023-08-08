@@ -6,4 +6,3 @@ import com.example.demo.model.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 }
-
