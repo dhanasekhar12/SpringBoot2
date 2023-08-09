@@ -3,8 +3,7 @@ package com.example.demo.model;
 
 import java.util.Date;
 
- 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,10 +28,19 @@ public class Employee {
     private Date emp_dob;
     @ManyToOne
     @JoinColumn(name = "deptId")
-    private Long department;
+    private Department department;
+    
     private Double salary;
-    private Long managerId;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "managerId")
+    private ManagerId managerId;
+    
     private String mobile;
+    //@Column(name = "deptId", insertable = false, updatable = false)
+	//private Long deptId;
+    //private Long managerId;
     public Long getId() {
         return id;
     }
@@ -41,8 +49,8 @@ public Employee() {
 		
 	}
     
-    
-    public Employee(String emp_name, Date emp_dob, Long department, Double salary, Long managerId,
+
+	public Employee(String emp_name, Date emp_dob, Department department, Double salary, ManagerId managerId,
 		String mobile) {
 	super();
 	
@@ -69,10 +77,10 @@ public Employee() {
     public void setEmp_dob(Date emp_dob) {
         this.emp_dob = emp_dob;
     }
-    public Long getDepartment() {
+    public Department getDepartment() {
         return department;
     }
-    public void setDepartment(Long department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
     public Double getSalary() {
@@ -81,10 +89,10 @@ public Employee() {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
-    public Long getManagerId() {
+    public ManagerId getManagerId() {
         return managerId;
     }
-    public void setManagerId(Long managerId) {
+    public void setManagerId(ManagerId managerId) {
         this.managerId = managerId;
     }
     public String getMobile() {
@@ -95,6 +103,5 @@ public Employee() {
     }
 
 	
-
 
 }

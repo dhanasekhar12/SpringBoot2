@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.demo.model.Employee;
+import com.example.demo.model.ManagerId;
 import com.example.demo.service.EmployeeService;
 
 import com.example.demo.model.Department;
@@ -48,12 +49,14 @@ public class EmployeeControllerTest {
     @Test
     public void testGetEmployeeById_Positive() {
         Long empId = 1L;
+        Department department=new Department();
         Employee mockEmployee = new Employee();
+        ManagerId managerId=new ManagerId();
         mockEmployee.setEmp_name("suri");
         mockEmployee.setEmp_dob(new Date(1993-03-04));
-        mockEmployee.setDepartment(2L);
+        mockEmployee.setDepartment(department);
         mockEmployee.setSalary(50000.0);
-        mockEmployee.setManagerId(123L);
+        mockEmployee.setManagerId(managerId);
         mockEmployee.setMobile("1234567890");
         
         when(employeeService.getEmployeeById(empId)).thenReturn(Optional.of(mockEmployee));
@@ -82,8 +85,10 @@ public class EmployeeControllerTest {
     @Test
     public void testGetAllEmployee_Positive() {
         List<Employee> mockEmployees = new ArrayList<>();
-        mockEmployees.add(new Employee("suri", new Date(1993-03-04), 2L, 50000.0, 123L, "1234567890"));
-        mockEmployees.add(new Employee("shiva", new Date(1980-06-05), 2L, 60000.0, 1L, "9876543210"));
+        Department department=new Department();
+        ManagerId managerId=new ManagerId();
+        mockEmployees.add(new Employee("suri", new Date(1993-03-04), department ,50000.0, managerId, "1234567890"));
+        mockEmployees.add(new Employee("shiva", new Date(1980-06-05), department, 60000.0, managerId, "9876543210"));
         
         when(employeeService.getAllEmployee()).thenReturn(mockEmployees);
 
@@ -107,9 +112,11 @@ public class EmployeeControllerTest {
     //update employee positive
     @Test
     public void testUpdateEmployee_Positive() {
+    	Department department=new Department();
+    	ManagerId managerId=new ManagerId();
         Long employeeId = 1L;
         /* Set updated employee details */
-        Employee updatedEmployee = new Employee("reddi", new Date(1995-02-02), 89l, 60000.0, 1L, "776567544");
+        Employee updatedEmployee = new Employee("reddi", new Date(1995-02-02), department, 60000.0, managerId, "776567544");
         
         when(employeeService.updateEmployee(eq(employeeId), any(Employee.class))).thenReturn(updatedEmployee);
 
@@ -121,8 +128,10 @@ public class EmployeeControllerTest {
     //update employee negative
     @Test
     public void testUpdateEmployee_Negative_Failure() {
+    	Department department=new Department();
+    	ManagerId managerId=new ManagerId();
         Long employeeId = 1L;
-        Employee updatedEmployee = new Employee("prasad",new Date(1995-06-05), 12L, 70000.0, 1L, "889567544");
+        Employee updatedEmployee = new Employee("prasad",new Date(1995-06-05), department, 70000.0, managerId, "889567544");
         
         when(employeeService.updateEmployee(eq(employeeId), any(Employee.class))).thenReturn(null);
 
@@ -159,12 +168,14 @@ public class EmployeeControllerTest {
   //add employee positive
     @Test
     public void testAddEmployee_PositiveScenario() {
+    	Department department=new Department();
     	Employee newEmployee = new Employee();
+    	ManagerId managerId=new ManagerId();
     	newEmployee.setEmp_name("Dhana");
     	newEmployee.setEmp_dob(new Date(1993-03-04));
-    	newEmployee.setDepartment(2L);
+    	newEmployee.setDepartment(department);
     	newEmployee.setSalary(50000.0);
-    	newEmployee.setManagerId(23L);
+    	newEmployee.setManagerId(managerId);
     	newEmployee.setMobile("1234567890");
         
 
@@ -183,12 +194,14 @@ public class EmployeeControllerTest {
    //add employee negative
     @Test
     public void testSaveEmployee_NegativeScenario() {
+    	Department department=new Department();
         Employee newEmployee = new Employee(  );
+        ManagerId managerId=new ManagerId();
         newEmployee.setEmp_name("Dhana");
     	newEmployee.setEmp_dob(new Date(1993-03-04));
-    	newEmployee.setDepartment(2L);
+    	newEmployee.setDepartment(department);
     	newEmployee.setSalary(50000.0);
-    	newEmployee.setManagerId(22L);
+    	newEmployee.setManagerId(managerId);
     	newEmployee.setMobile("1234567890");
 
         when(employeeService.saveEmployee(newEmployee)).thenReturn(null);
